@@ -2,11 +2,17 @@
   "name": "react.dev-clone",
   "version": "0.1.0",
   "private": true,
+  "license": "UNLICENSED",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prepare": "husky",
+    "format:source": "prettier --config .prettierrc --write \"{plugins,src}/**/*.{js,ts,jsx,tsx,css}\"",
+    "prettier": "yarn format:source",
+    "fix-headings": "node scripts/headingIdLinter.js --fix",
+    "lint-heading-ids": "node scripts/headingIdLinter.js"
   },
   "dependencies": {
     "@types/node": "20.11.17",
@@ -15,11 +21,21 @@
     "autoprefixer": "10.4.17",
     "eslint": "8.56.0",
     "eslint-config-next": "14.1.0",
+    "github-slugger": "^2.0.0",
     "next": "14.1.0",
     "postcss": "8.4.35",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "tailwindcss": "3.4.1",
     "typescript": "5.3.3"
+  },
+  "devDependencies": {
+    "husky": "^9.0.10",
+    "lint-staged": "^15.2.2",
+    "prettier": "3.2.5"
+  },
+  "lint-staged": {
+    "*.{js,ts,jsx,tsx,css}": "yarn prettier",
+    "src/**/*.md": "yarn fix-headings"
   }
 }
