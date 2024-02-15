@@ -1,3 +1,17 @@
 {
-  "extends": "next/core-web-vitals"
+  "root": true,
+  "extends": "next/core-web-vitals",
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "rules": {
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": ["error", {"varsIgnorePattern": "^_"}],
+    "react-hooks/exhaustive-deps": "error"
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "commonjs": true,
+    "es6": true
+  }
 }
